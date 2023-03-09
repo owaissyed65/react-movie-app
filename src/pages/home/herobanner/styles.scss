@@ -1,0 +1,152 @@
+@import "../../../mixins.scss";
+
+.heroBanner {
+    width: 100%;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    @include md {
+        height: 700px;
+    }
+    .backdrop-img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.4;
+        overflow: hidden;
+        .lazy-load-image-background {
+            width: 100%;
+            height: 100%;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                // object-position: center;
+            }
+        }
+    }
+    .opacity-layer {
+        width: 100%;
+        height: 250px;
+        background: linear-gradient(180deg, rgba(4, 21, 25, 0) 0%, #04152d 79.17%);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    .heroBannerContent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 800px;
+        margin: 0 auto;
+        color: var(--text-color);
+        text-align: center;
+        position: relative;
+        .title {
+            font-size: 50px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            @include md {
+                margin-bottom: 0;
+                font-size: 90px;
+            }
+        }
+        .subTitle {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 40px;
+            @include md {
+                font-size: 24px;
+            }
+        }
+        .searchInput {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            input {
+                width: calc(100% - 100px);
+                height: 50px;
+                background-color: var(--text-color);
+                outline: 0;
+                border: 0;
+                border-radius: 20px 0 0 20px;
+                -webkit-border-radius: 20px 0 0 20px;
+                -moz-border-radius: 20px 0 0 20px;
+                -ms-border-radius: 20px 0 0 20px;
+                -o-border-radius: 20px 0 0 20px;
+                padding: 0 15px;
+                font-size: 14px;
+
+                @include md {
+                    width: calc(100% - 150px);
+                    height: 60px;
+                    font-size: 20px;
+                    padding: 0 30px;
+                }
+            }
+            button {
+                background: var(--gradient);
+                width: 100px;
+                height: 50px;
+                color: var(--text-color);
+                outline: 0;
+                border: 0;
+                border-radius: 0 30px 30px 0;
+                -webkit-border-radius: 0 30px 30px 0;
+                -moz-border-radius: 0 30px 30px 0;
+                -ms-border-radius: 0 30px 30px 0;
+                -o-border-radius: 0 30px 30px 0;
+                font-size: 16px;
+                cursor: pointer;
+                position: relative;
+
+                overflow: hidden;
+                @include md {
+                    width: 150px;
+                    height: 60px;
+                    font-size: 18px;
+                }
+                &::before {
+                    position: absolute;
+                    content: "";
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.5);
+                    width: 0%;
+                    transition: width 1s;
+                    -webkit-transition: width 1s;
+                    -moz-transition: width 1s;
+                    -ms-transition: width 1s;
+                    -o-transition: width 1s;
+                }
+                &::after {
+                    position: absolute;
+                    content: "";
+                    top: 0;
+                    right: 0;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.5);
+                    width: 0%;
+                    transition: width 1s;
+                    -webkit-transition: width 0.5s ease-in-out;
+                    -moz-transition: width 1s;
+                    -ms-transition: width 1s;
+                    -o-transition: width 1s;
+                }
+                &:hover:before {
+                    width: 50%;
+                }
+                &:hover:after {
+                    width: 50%;
+                }
+            }
+        }
+    }
+}
+.color::-webkit-input-placeholder {
+    color: #aa180e;
+}
